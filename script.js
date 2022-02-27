@@ -50,7 +50,7 @@ for (let i = 0; i < 15; i++) {
     product.appendChild(numberOfProduct);
     product.appendChild(para);
     product.style.cssText = "display:flex; flex-direction:column; justify-content:center; align-items:center; background-color: white";
-    para.style.cssText = "color:rgb(152,149,152)";
+    para.style.cssText = "color:rgb(152,149,152); margin: 0px;";
     numberOfProduct.style.cssText = "margin:0px; font-weight: 400;";
     content.appendChild(product);
 }
@@ -65,8 +65,31 @@ footerH2.style.cssText = "color: white; font-weight: 400;"
 footerH2.appendChild(footerH2Text);
 footer.appendChild(footerH2);
 //end footerSection
+//responsive by javaScript
+let mediaQuery = window.matchMedia("(max-width: 674px)");
+function checkMedia(mediaQuery) {
+    if (mediaQuery.matches) {
+        content.style.height = "auto";
+        links.forEach((item) => {
+            item.style.padding = "5px";
+            item.style.fontSize = "15px";
+        })
+        logo.style.fontSize = "22px";
+        footerH2.style.fontSize = "20px";
+    } else {
+        content.style.height = "calc(100% - 170px)";
+        links.forEach((item) => {
+            item.style.padding = "10px";
+            item.style.fontSize = "18px";
+        })
+        logo.style.fontSize = "26px";
+        footerH2.style.fontSize = "22px";
+    }
 
-
+}
+console.log(mediaQuery);
+mediaQuery.addEventListener("change", checkMedia);
+checkMedia(mediaQuery);
 
 //append section
 links.forEach(function (item) {
